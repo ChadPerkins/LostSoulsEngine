@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{E8F3FBE8-5DC4-425A-8B99-D387910142AA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LostSoulsEngine", "LostSoulsEngine\LostSoulsEngine.vcxproj", "{117E6E2E-F6E5-44BA-8A3D-6B781DC3D899}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LostSouls", "LostSouls\LostSouls.vcxproj", "{117E6E2E-F6E5-44BA-8A3D-6B781DC3D899}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

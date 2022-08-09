@@ -27,9 +27,15 @@
     <ClInclude Include="src\LostSouls\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\LostSouls\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LostSouls\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LostSouls\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
