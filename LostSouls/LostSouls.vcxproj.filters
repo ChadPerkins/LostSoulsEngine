@@ -4,6 +4,9 @@
     <Filter Include="LostSouls">
       <UniqueIdentifier>{1DE8B5A0-8952-6A17-D290-1BBD3E3A486C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LostSouls\Events">
+      <UniqueIdentifier>{61B1EB5A-4DAA-0AAD-76DC-EF316234EAB8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\LostSouls.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\LostSouls\EntryPoint.h">
       <Filter>LostSouls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LostSouls\Events\ApplicationEvent.h">
+      <Filter>LostSouls\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LostSouls\Events\Event.h">
+      <Filter>LostSouls\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LostSouls\Events\KeyEvent.h">
+      <Filter>LostSouls\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LostSouls\Events\MouseEvent.h">
+      <Filter>LostSouls\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\LostSouls\Log.h">
       <Filter>LostSouls</Filter>
