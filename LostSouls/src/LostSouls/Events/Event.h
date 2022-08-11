@@ -1,8 +1,7 @@
 #pragma once
-
 #include "LostSouls/Core.h"
+
 #include <string>
-#include <functional>
 
 namespace LostSouls {
 	/* Events in the Lost Souls engine are currently set up as blocking, meaning that when an
@@ -55,10 +54,10 @@ namespace LostSouls {
 
 	class EventDispatcher
 	{
+	public:
 		template<typename T>
 		// Create a function that takes in an event type and returns a bool
 		using EventFn = std::_Function_args<bool(T&)>;
-	public:
 		EventDispatcher(Event& event) : m_Event(event)
 		{
 

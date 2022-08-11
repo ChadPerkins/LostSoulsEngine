@@ -10,6 +10,12 @@ workspace "LostSouls"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include diectories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "LostSouls/vendor/GLFW/include"
+
+include "LostSouls/vendor/GLFW"
+
 project "LostSouls"
     location "LostSouls"
     kind "SharedLib"
@@ -27,8 +33,18 @@ project "LostSouls"
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
     }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
+    }
+
+    pchheader "lspch.h"
+    pchsource "LostSouls/src/lspch.cpp"
 
     filter "system:windows"
         cppdialect "C++17"

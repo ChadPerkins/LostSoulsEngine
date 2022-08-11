@@ -1,8 +1,6 @@
 #pragma once
 #include "Event.h"
 
-#include <sstream>
-
 namespace LostSouls {
 
 	class LOSTSOULS_API MouseMovedEvent : Event
