@@ -1,7 +1,7 @@
 #pragma once
 #include "LostSouls/Core.h"
 
-#include <string>
+#include "lspch.h"
 
 namespace LostSouls {
 	/* Events in the Lost Souls engine are currently set up as blocking, meaning that when an
@@ -22,9 +22,9 @@ namespace LostSouls {
 	{
 		none = 0,
 		EventCategoryApplication = BIT(0),
-		EventCategoryInput       = BIT(1),
-		EventCategoryKeyboard    = BIT(2),
-		EventCategoryMouse       = BIT(3),
+		EventCategoryInput = BIT(1),
+		EventCategoryKeyboard = BIT(2),
+		EventCategoryMouse = BIT(3),
 		EventCategoryMouseButton = BIT(4)
 	};
 
@@ -54,10 +54,10 @@ namespace LostSouls {
 
 	class EventDispatcher
 	{
-	public:
-		template<typename T>
 		// Create a function that takes in an event type and returns a bool
-		using EventFn = std::_Function_args<bool(T&)>;
+		template<typename T>
+		using EventFn = std::function<bool(T&)>;
+	public:
 		EventDispatcher(Event& event) : m_Event(event)
 		{
 
@@ -67,7 +67,7 @@ namespace LostSouls {
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
-			if (mEvent.GetEventType() == T::GetStaticType())
+			if (m_Event.GetEventType() == T::GetStaticType())
 			{
 				// If the event matches the type then call the function with that event
 				m_Event.m_Handled = func(*(T*)&m_Event);
