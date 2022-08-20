@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include diectories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "LostSouls/vendor/GLFW/include"
+IncludeDir["Glad"] = "LostSouls/vendor/Glad/include"
 
 include "LostSouls/vendor/GLFW"
+include "LostSouls/vendor/Glad"
 
 project "LostSouls"
     location "LostSouls"
@@ -34,12 +36,14 @@ project "LostSouls"
     {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links
     {
         "GLFW",
+        "Glad",
         "opengl32.lib"
     }
 
@@ -54,7 +58,8 @@ project "LostSouls"
         defines
         {
             "LS_PLATFORM_WINDOWS",
-            "LS_BUILD_DLL"
+            "LS_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
@@ -64,14 +69,17 @@ project "LostSouls"
     
     filter "configurations:Debug"
         defines "LS_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "LS_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "LS_DIST"
+        buildoptions "/MD"
         optimize "On"
 
 project "Sandbox"
@@ -111,12 +119,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "LS_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "LS_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "LS_DIST"
+        buildoptions "/MD"
         optimize "On"

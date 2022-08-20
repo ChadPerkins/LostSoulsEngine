@@ -37,6 +37,12 @@
     <ClInclude Include="src\LostSouls\Events\MouseEvent.h">
       <Filter>LostSouls\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\LostSouls\Layer.h">
+      <Filter>LostSouls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LostSouls\LayerStack.h">
+      <Filter>LostSouls</Filter>
+    </ClInclude>
     <ClInclude Include="src\LostSouls\Log.h">
       <Filter>LostSouls</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LostSouls\Application.cpp">
+      <Filter>LostSouls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LostSouls\Layer.cpp">
+      <Filter>LostSouls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LostSouls\LayerStack.cpp">
       <Filter>LostSouls</Filter>
     </ClCompile>
     <ClCompile Include="src\LostSouls\Log.cpp">
