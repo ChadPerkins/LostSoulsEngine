@@ -1,7 +1,7 @@
 #pragma once
+#include "lspch.h"
 #include "LostSouls/Core.h"
 
-#include "lspch.h"
 
 namespace LostSouls {
 	/* Events in the Lost Souls engine are currently set up as blocking, meaning that when an
@@ -14,7 +14,7 @@ namespace LostSouls {
 		none = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 

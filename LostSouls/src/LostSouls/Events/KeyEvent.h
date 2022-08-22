@@ -60,4 +60,25 @@ namespace LostSouls {
 		// Implement the key released class type
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
+
+
+	class LOSTSOULS_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		// Constructor to store which key was pressed
+		KeyTypedEvent(int keycode)
+			: KeyEvent(keycode) {}
+
+
+		// Print the keyboard key typed event with the key
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << m_KeyCode;
+			return ss.str();
+		}
+
+		// Implement the key typed class type
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
 }
