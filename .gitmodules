@@ -4,3 +4,6 @@
 [submodule "LostSouls/vendor/GLFW"]
 	path = LostSouls/vendor/GLFW
 	url = https://github.com/glfw/glfw
+[submodule "LostSouls/vendor/imgui"]
+	path = LostSouls/vendor/imgui
+	url = https://github.com/ocornut/imgui

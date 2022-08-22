@@ -1,16 +1,21 @@
 #include "lspch.h"
+#include <glad/glad.h>
 #include "Application.h"
 
 #include "Log.h"
 
-#include <glad/glad.h>
 
 namespace LostSouls {
 
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
+	Application* Application::s_Instance = nullptr;
+
 	LostSouls::Application::Application()
 	{
+		LS_CORE_ASSERT(!s_Instance, "Application already exsists.");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 	}
@@ -23,11 +28,13 @@ namespace LostSouls {
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack.PushLayer(overlay);
+		overlay->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
@@ -52,7 +59,7 @@ namespace LostSouls {
 	{
 		while (m_Running)
 		{
-			glClearColor(1, 0, 1, 1);
+			glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			for (Layer* layer : m_LayerStack)
