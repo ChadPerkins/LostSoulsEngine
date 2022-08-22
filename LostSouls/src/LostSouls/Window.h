@@ -38,6 +38,8 @@ namespace LostSouls {
 		virtual void SetVSynq(bool enabled) = 0;
 		virtual bool IsVSynq() const = 0;
 
+		virtual void* GetNativeWindow() const = 0;
+
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
 }
