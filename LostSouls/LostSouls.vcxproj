@@ -161,10 +161,12 @@
     <ClInclude Include="src\LostSouls\Events\KeyEvent.h" />
     <ClInclude Include="src\LostSouls\Events\MouseEvent.h" />
     <ClInclude Include="src\LostSouls\Input.h" />
+    <ClInclude Include="src\LostSouls\KeyCodes.h" />
     <ClInclude Include="src\LostSouls\Layer.h" />
     <ClInclude Include="src\LostSouls\LayerStack.h" />
     <ClInclude Include="src\LostSouls\Log.h" />
     <ClInclude Include="src\LostSouls\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\LostSouls\MouseButtonCodes.h" />
     <ClInclude Include="src\LostSouls\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGlRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />

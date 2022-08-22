@@ -10,12 +10,17 @@ public:
 
 	void OnUpdate() override
 	{
-		LS_INFO("ExampleLayer::Update");
+		if(LostSouls::Input::IsKeyPressed(LS_KEY_TAB))
+			LS_TRACE("Tab key is pressed...");
 	}
 
 	void OnEvent(LostSouls::Event& event) override
 	{
-		LS_TRACE("{0}", event);
+		if (event.GetEventType() == LostSouls::EventType::KeyPressed)
+		{
+			LostSouls::KeyPressedEvent& e = (LostSouls::KeyPressedEvent&)event;
+			LS_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

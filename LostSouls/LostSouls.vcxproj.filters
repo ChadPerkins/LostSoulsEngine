@@ -67,6 +67,8 @@
     <ClInclude Include="src\lspch.h" />
     <ClInclude Include="src\LostSouls\Input.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\LostSouls\KeyCodes.h" />
+    <ClInclude Include="src\LostSouls\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LostSouls\Application.cpp">
