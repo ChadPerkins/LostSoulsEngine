@@ -168,7 +168,6 @@
     <ClInclude Include="src\LostSouls\Log.h" />
     <ClInclude Include="src\LostSouls\MouseButtonCodes.h" />
     <ClInclude Include="src\LostSouls\Window.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGlRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\lspch.h" />
@@ -590,11 +589,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LostSouls\Application.cpp" />
+    <ClCompile Include="src\LostSouls\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\LostSouls\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\LostSouls\Layer.cpp" />
     <ClCompile Include="src\LostSouls\LayerStack.cpp" />
     <ClCompile Include="src\LostSouls\Log.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGlRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\lspch.cpp">

@@ -93,9 +93,6 @@
     <ClInclude Include="src\LostSouls\Window.h">
       <Filter>src\LostSouls</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGlRenderer.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -1367,9 +1364,6 @@
     <ClCompile Include="src\LostSouls\Log.cpp">
       <Filter>src\LostSouls</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGlRenderer.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1379,5 +1373,6 @@
     <ClCompile Include="src\lspch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\LostSouls\ImGui\ImGuiBuild.cpp" />
   </ItemGroup>
 </Project>
