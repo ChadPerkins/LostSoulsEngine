@@ -5,6 +5,7 @@
 #include "LayerStack.h"
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
+#include "LostSouls/ImGui/ImGuiLayer.h"
 
 namespace LostSouls {
 	
@@ -29,6 +30,7 @@ namespace LostSouls {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 
 		bool m_Running = true;
 		// Create the layer stack within the application to share its life span

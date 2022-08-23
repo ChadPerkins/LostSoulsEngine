@@ -108,6 +108,7 @@ project "Sandbox"
     {
         "LostSouls/vendor/spdlog/include",
         "LostSouls/src",
+        "LostSould/vendor",
         "%{IncludeDir.glm}"
     }
 

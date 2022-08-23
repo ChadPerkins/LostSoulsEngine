@@ -30,8 +30,8 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new LostSouls::ImGuiLayer());
 	}
+
 	~Sandbox()
 	{
 
