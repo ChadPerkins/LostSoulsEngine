@@ -15,6 +15,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "LostSouls/vendor/GLFW/include"
 IncludeDir["Glad"] = "LostSouls/vendor/Glad/include"
 IncludeDir["ImGui"] = "LostSouls/vendor/imgui"
+IncludeDir["glm"] = "LostSouls/vendor/glm"
 
 include "LostSouls/vendor/GLFW"
 include "LostSouls/vendor/Glad"
@@ -31,7 +32,9 @@ project "LostSouls"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl"
     }
 
     includedirs
@@ -40,7 +43,8 @@ project "LostSouls"
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -103,7 +107,8 @@ project "Sandbox"
     includedirs
     {
         "LostSouls/vendor/spdlog/include",
-        "LostSouls/src"
+        "LostSouls/src",
+        "%{IncludeDir.glm}"
     }
 
     links
