@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef LS_PLATFORM_WINDOWS
+#if LS_DYNAMIC_LINK
 	#ifdef LS_BUILD_DLL
 		#define LOSTSOULS_API __declspec(dllexport)
 	#else
 		#define LOSTSOULS_API __declspec(dllimport)
 	#endif
+#else
+	#define LOSTSOULS_API
+#endif
 #else
 	#error LostSouls currently only supports windows...
 #endif
