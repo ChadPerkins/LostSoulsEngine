@@ -1,5 +1,6 @@
 #pragma once
 #include "LostSouls/Window.h"
+#include "LostSouls/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -29,6 +30,7 @@ namespace LostSouls {
 
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
