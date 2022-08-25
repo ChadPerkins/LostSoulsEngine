@@ -17,6 +17,12 @@ namespace LostSouls {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		LS_CORE_ASSERT(status, "Failed to initialize Glad.");
+
+		// Log the used rendering info
+		LS_CORE_INFO("OpenGL Info:");
+		LS_CORE_INFO("  Vendor: {0}", glGetString(GL_VENDOR));
+		LS_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
+		LS_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
 	}
 	
 	void LostSouls::OpenGLContext::SwapBuffers()
