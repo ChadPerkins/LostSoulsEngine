@@ -7,6 +7,9 @@
 #include "Events/ApplicationEvent.h"
 #include "LostSouls/ImGui/ImGuiLayer.h"
 
+#include "LostSouls/Renderer/Shader.h"
+#include "LostSouls/Renderer/Buffer.h"
+
 namespace LostSouls {
 	
 	class LOSTSOULS_API Application
@@ -36,7 +39,11 @@ namespace LostSouls {
 		// Create the layer stack within the application to share its life span
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		unsigned int m_VertexArray;
+
+		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 	private:
 		static Application* s_Instance;
 	};

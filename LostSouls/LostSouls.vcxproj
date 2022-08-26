@@ -164,8 +164,12 @@
     <ClInclude Include="src\LostSouls\LayerStack.h" />
     <ClInclude Include="src\LostSouls\Log.h" />
     <ClInclude Include="src\LostSouls\MouseButtonCodes.h" />
+    <ClInclude Include="src\LostSouls\Renderer\Buffer.h" />
     <ClInclude Include="src\LostSouls\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\LostSouls\Renderer\Renderer.h" />
+    <ClInclude Include="src\LostSouls\Renderer\Shader.h" />
     <ClInclude Include="src\LostSouls\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -593,6 +597,10 @@
     <ClCompile Include="src\LostSouls\Layer.cpp" />
     <ClCompile Include="src\LostSouls\LayerStack.cpp" />
     <ClCompile Include="src\LostSouls\Log.cpp" />
+    <ClCompile Include="src\LostSouls\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\LostSouls\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\LostSouls\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
