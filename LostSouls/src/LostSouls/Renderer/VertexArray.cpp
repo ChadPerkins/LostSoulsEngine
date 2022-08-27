@@ -10,8 +10,8 @@ namespace LostSouls {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::none:		LS_CORE_ASSERT(false, "RendererAPI::none is currently not supported."); return nullptr;
-		case RendererAPI::OpenGL:	return new OpenGLVertexArray();
+		case RendererAPI::API::none:		LS_CORE_ASSERT(false, "RendererAPI::none is currently not supported."); return nullptr;
+		case RendererAPI::API::OpenGL:	return new OpenGLVertexArray();
 		}
 
 		LS_CORE_ASSERT(false, "Unkown rendererAPI.");

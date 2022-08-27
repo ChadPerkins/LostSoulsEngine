@@ -1352,6 +1352,9 @@
     <ClInclude Include="src\LostSouls\Renderer\Renderer.h" />
     <ClInclude Include="src\LostSouls\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\LostSouls\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\LostSouls\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LostSouls\Application.cpp">
@@ -1388,5 +1391,8 @@
     <ClCompile Include="src\LostSouls\Renderer\Renderer.cpp" />
     <ClCompile Include="src\LostSouls\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\LostSouls\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\LostSouls\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>
