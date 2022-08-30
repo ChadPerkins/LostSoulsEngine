@@ -152,6 +152,7 @@
     <ClInclude Include="src\LostSouls.h" />
     <ClInclude Include="src\LostSouls\Application.h" />
     <ClInclude Include="src\LostSouls\Core.h" />
+    <ClInclude Include="src\LostSouls\Core\Timestep.h" />
     <ClInclude Include="src\LostSouls\EntryPoint.h" />
     <ClInclude Include="src\LostSouls\Events\ApplicationEvent.h" />
     <ClInclude Include="src\LostSouls\Events\Event.h" />

@@ -3,8 +3,12 @@
 
 #include "Window.h"
 #include "LayerStack.h"
+
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
+
+#include "LostSouls/Core/Timestep.h"
+
 #include "LostSouls/ImGui/ImGuiLayer.h"
 
 #include "LostSouls/Renderer/Buffer.h"
@@ -34,13 +38,14 @@ namespace LostSouls {
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 
 		bool m_Running = true;
 		// Create the layer stack within the application to share its life span
 		LayerStack m_LayerStack;
-
+		float m_LastFrameTime = 0.0f;
 		
 	private:
 		static Application* s_Instance;

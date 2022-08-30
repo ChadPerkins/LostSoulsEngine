@@ -5,6 +5,8 @@
 #include "Log.h"
 #include "LostSouls/Renderer/Renderer.h"
 
+#include <GLFW/glfw3.h>
+
 namespace LostSouls {
 
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
@@ -59,8 +61,12 @@ namespace LostSouls {
 	{
 		while (m_Running)
 		{
+			float time = glfwGetTime();
+			Timestep timeStep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timeStep);
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)

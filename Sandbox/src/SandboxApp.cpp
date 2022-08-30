@@ -132,23 +132,23 @@ public:
 		m_BlueShader.reset(new LostSouls::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(LostSouls::Timestep ts) override
 	{
 		// Conditions to control the camera movement
 		if (LostSouls::Input::IsKeyPressed(LS_KEY_LEFT))
-			m_CameraPosition.x -= m_MovementSpeed;		
+			m_CameraPosition.x -= m_CameraMovementSpeed * ts;
 		else if (LostSouls::Input::IsKeyPressed(LS_KEY_RIGHT))
-			m_CameraPosition.x += m_MovementSpeed;
+			m_CameraPosition.x += m_CameraMovementSpeed * ts;
 		
 		if (LostSouls::Input::IsKeyPressed(LS_KEY_DOWN))
-			m_CameraPosition.y -= m_MovementSpeed;
+			m_CameraPosition.y -= m_CameraMovementSpeed * ts;
 		else if (LostSouls::Input::IsKeyPressed(LS_KEY_UP))
-			m_CameraPosition.y += m_MovementSpeed;
+			m_CameraPosition.y += m_CameraMovementSpeed * ts;
 
 		if (LostSouls::Input::IsKeyPressed(LS_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed;
+			m_CameraRotation += m_CameraRotationSpeed * ts;
 		if (LostSouls::Input::IsKeyPressed(LS_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed;
+			m_CameraRotation -= m_CameraRotationSpeed * ts;
 		
 
 		LostSouls::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
@@ -181,9 +181,9 @@ private:
 
 	LostSouls::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
+	float m_CameraMovementSpeed = 5.0f;
 	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 2.0f;
-	float m_MovementSpeed = 0.1f;
+	float m_CameraRotationSpeed = 180.0f;
 };
 
 class Sandbox : public LostSouls::Application

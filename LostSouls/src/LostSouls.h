@@ -4,6 +4,8 @@
 #include "LostSouls/Layer.h"
 #include "LostSouls/Log.h"
 
+#include "LostSouls/Core/Timestep.h"
+
 // Input related imports
 #include "LostSouls/Input.h"
 #include "LostSouls/KeyCodes.h"
