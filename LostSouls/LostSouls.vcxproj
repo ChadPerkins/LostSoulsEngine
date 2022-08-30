@@ -166,6 +166,7 @@
     <ClInclude Include="src\LostSouls\MouseButtonCodes.h" />
     <ClInclude Include="src\LostSouls\Renderer\Buffer.h" />
     <ClInclude Include="src\LostSouls\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\LostSouls\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\LostSouls\Renderer\RenderCommand.h" />
     <ClInclude Include="src\LostSouls\Renderer\Renderer.h" />
     <ClInclude Include="src\LostSouls\Renderer\RendererAPI.h" />
@@ -603,6 +604,7 @@
     <ClCompile Include="src\LostSouls\LayerStack.cpp" />
     <ClCompile Include="src\LostSouls\Log.cpp" />
     <ClCompile Include="src\LostSouls\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\LostSouls\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\LostSouls\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\LostSouls\Renderer\Renderer.cpp" />
     <ClCompile Include="src\LostSouls\Renderer\RendererAPI.cpp" />

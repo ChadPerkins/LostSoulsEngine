@@ -11,6 +11,16 @@
 
 #include "LostSouls/ImGui/ImGuiLayer.h"
 
+// Renderer imports
+#include "LostSouls/Renderer/Renderer.h"
+#include "LostSouls/Renderer/RenderCommand.h"
+
+#include "LostSouls/Renderer/Buffer.h"
+#include "LostSouls/Renderer/Shader.h"
+#include "LostSouls/Renderer/VertexArray.h"
+
+#include "LostSouls/Renderer/OrthographicCamera.h"
+
 // ~~~~~~~~~~ENTRY POINT~~~~~~~~~~
 // -------------------------------
 #include "LostSouls/EntryPoint.h"

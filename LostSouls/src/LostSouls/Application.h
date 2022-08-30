@@ -7,8 +7,9 @@
 #include "Events/ApplicationEvent.h"
 #include "LostSouls/ImGui/ImGuiLayer.h"
 
-#include "LostSouls/Renderer/Shader.h"
 #include "LostSouls/Renderer/Buffer.h"
+#include "LostSouls/Renderer/OrthographicCamera.h"
+#include "LostSouls/Renderer/Shader.h"
 #include "LostSouls/Renderer/VertexArray.h"
 
 namespace LostSouls {
@@ -40,12 +41,7 @@ namespace LostSouls {
 		// Create the layer stack within the application to share its life span
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
+		
 	private:
 		static Application* s_Instance;
 	};
