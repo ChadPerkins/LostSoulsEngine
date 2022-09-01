@@ -21,8 +21,10 @@ namespace LostSouls {
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 
-		m_ImGuiLayer = new ImGuiLayer();
-		PushOverlay(m_ImGuiLayer);
+		// Commented out so imgui doesnt give "Assertion failed: io.BackendPlatformUserData == 0 && "Already initialized a platform backend!"
+		// warning in the sandbox layer
+		/*m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);*/
 	}
 
 	Application::~Application()
