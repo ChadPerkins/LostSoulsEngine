@@ -18,13 +18,13 @@ public:
 		m_VertexArray.reset(LostSouls::VertexArray::Create());
 
 		// Vertex buffer
-		float vertices[3 * 7] = {
-			-0.5f, -0.5f, 0.0f, 0.8f, 0.1f, 0.8f, 1.0f,
-			 0.5f, -0.5f, 0.0f, 0.3f, 0.1f, 0.8f, 1.0f,
-			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f,
+		float vertices[3 * 4] = {
+			-0.5f, -0.5f, 0.0f, 
+			 0.5f, -0.5f, 0.0f, 
+			 0.0f,  0.5f, 0.0f, 
 		};
 
-		std::shared_ptr<LostSouls::VertexBuffer> vertexBuffer;
+		LostSouls::Ref<LostSouls::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(LostSouls::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		LostSouls::BufferLayout layout = {
@@ -37,32 +37,32 @@ public:
 
 		// Index buffer
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<LostSouls::IndexBuffer> indexBuffer;
+		LostSouls::Ref<LostSouls::IndexBuffer> indexBuffer;
 		indexBuffer.reset(LostSouls::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		//// Creating a square ////
 		m_SquareVA.reset(LostSouls::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f,
-
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
 		};
 
-		std::shared_ptr<LostSouls::VertexBuffer> squareVB;
+		LostSouls::Ref<LostSouls::VertexBuffer> squareVB;
 		squareVB.reset(LostSouls::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 
 		squareVB->SetLayout({
 			{ LostSouls::ShaderDataType::Vec3, "a_Position"},
+			{ LostSouls::ShaderDataType::Vec2, "a_TexCoord"},
 			});
 		// Must add the vertex buffer to the vertex array after the layout has been set
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<LostSouls::IndexBuffer> squareIB;
+		LostSouls::Ref<LostSouls::IndexBuffer> squareIB;
 		squareIB.reset(LostSouls::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -139,9 +139,53 @@ public:
 			}
 			
 		)";
-		
-		
+
+
 		m_FlatColorShader.reset(LostSouls::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+			}
+			
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+
+			layout(location = 0) out vec4 color;
+
+			in vec2 v_TexCoord;
+
+			uniform sampler2D u_Texture;
+
+			void main()
+			{
+				color = texture(u_Texture, v_TexCoord);
+			}
+			
+		)";
+		
+		
+		m_TextureShader.reset(LostSouls::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = LostSouls::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		std::dynamic_pointer_cast<LostSouls::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<LostSouls::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+
 	}
 
 	void OnUpdate(LostSouls::Timestep ts) override
@@ -185,7 +229,11 @@ public:
 				LostSouls::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
-		LostSouls::Renderer::Submit(m_Shader, m_VertexArray);
+		m_Texture->Bind();
+		LostSouls::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+		// Triangle
+		//LostSouls::Renderer::Submit(m_Shader, m_VertexArray);
 
 		LostSouls::Renderer::EndScene();
 	}
@@ -203,11 +251,13 @@ public:
 	}
 	
 private:
-	std::shared_ptr<LostSouls::Shader> m_Shader;
-	std::shared_ptr<LostSouls::VertexArray> m_VertexArray;
+	LostSouls::Ref<LostSouls::Shader> m_Shader;
+	LostSouls::Ref<LostSouls::VertexArray> m_VertexArray;
 
-	std::shared_ptr<LostSouls::Shader> m_FlatColorShader;
-	std::shared_ptr<LostSouls::VertexArray> m_SquareVA;
+	LostSouls::Ref<LostSouls::Shader> m_FlatColorShader, m_TextureShader;
+	LostSouls::Ref<LostSouls::VertexArray> m_SquareVA;
+
+	LostSouls::Ref<LostSouls::Texture2D> m_Texture;
 
 	LostSouls::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

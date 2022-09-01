@@ -19,6 +19,7 @@
 
 #include "LostSouls/Renderer/Buffer.h"
 #include "LostSouls/Renderer/Shader.h"
+#include "LostSouls/Renderer/Texture.h"
 #include "LostSouls/Renderer/VertexArray.h"
 
 #include "LostSouls/Renderer/OrthographicCamera.h"
