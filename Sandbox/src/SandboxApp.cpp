@@ -182,6 +182,7 @@ public:
 		m_TextureShader.reset(LostSouls::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
 
 		m_Texture = LostSouls::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_GlobeTexture = LostSouls::Texture2D::Create("assets/textures/Globe.png");
 
 		std::dynamic_pointer_cast<LostSouls::OpenGLShader>(m_TextureShader)->Bind();
 		std::dynamic_pointer_cast<LostSouls::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
@@ -229,7 +230,11 @@ public:
 				LostSouls::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
+
 		m_Texture->Bind();
+		LostSouls::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+		m_GlobeTexture->Bind();
 		LostSouls::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// Triangle
@@ -257,7 +262,7 @@ private:
 	LostSouls::Ref<LostSouls::Shader> m_FlatColorShader, m_TextureShader;
 	LostSouls::Ref<LostSouls::VertexArray> m_SquareVA;
 
-	LostSouls::Ref<LostSouls::Texture2D> m_Texture;
+	LostSouls::Ref<LostSouls::Texture2D> m_Texture, m_GlobeTexture;
 
 	LostSouls::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
@@ -274,7 +279,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new LostSouls::ImGuiLayer());
+		//PushOverlay(new LostSouls::ImGuiLayer());
 	}
 
 	~Sandbox()
